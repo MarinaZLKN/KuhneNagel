@@ -2,8 +2,7 @@ import axios from "axios";
 
 export const SHOW_SHIPMENTS = 'SHOW_SHIPMENTS';
 export const DELETE_SHIPMENT = 'DELETE_SHIPMENT';
-
-
+export const UPDATE_SHIPMENT = 'UPDATE_SHIPMENT';
 
 export const showShipments = (shipments) => ({
   type: SHOW_SHIPMENTS,
@@ -15,6 +14,11 @@ export const deleteShipment = (orderNo) => ({
   payload: orderNo,
 });
 
+export const updateShipment = (updatedShipment) => ({
+  type: UPDATE_SHIPMENT,
+  payload: updatedShipment,
+});
+
 export const fetchShipments = () => async (dispatch) => {
   try {
     const response = await fetch('./shipments1.json');
@@ -24,6 +28,7 @@ export const fetchShipments = () => async (dispatch) => {
     console.error("Error in actions:", error);
   }
 };
+
 
 
 // export const fetchShipments = () => async (dispatch) => {

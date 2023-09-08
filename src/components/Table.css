@@ -53,7 +53,7 @@
 }
 
 .btn{
-    background: #D20A11;
+    background: #45a902;
     border-radius: 5px;
     border: none;
     cursor: pointer;
@@ -66,20 +66,12 @@
 }
 
 .btn:hover {
-    background-color: #ce595e;
-}
-
-.btn-1{
-	background: #45a902;
-    border-radius: 5px;
-    border: none;
-    font-size: 12px;
-    color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-    margin-right: 10px;
-    margin-bottom: 10px;
-}
-
-.btn-1:hover {
     background-color: #7ead53;
+}
+
+#delete{
+	background-color: #a92e2f;
+}
+#delete:hover {
+    background-color: #ce595e;
 }

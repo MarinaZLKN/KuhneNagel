@@ -1,7 +1,8 @@
-import {DELETE_SHIPMENT, SHOW_SHIPMENTS } from "../actions/actions";
+import {DELETE_SHIPMENT, SHOW_SHIPMENTS, UPDATE_SHIPMENT} from "../actions/actions";
 
 const initialState = {
   shipments: [],
+  editedShipment: null,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -14,6 +15,15 @@ const rootReducer = (state = initialState, action) => {
         shipments: state.shipments.filter(
           (shipment) => shipment.orderNo !== action.payload
         ),
+      };
+    case UPDATE_SHIPMENT:
+      const updatedShipments = state.shipments.map((shipment) =>
+        shipment.orderNo === action.payload.orderNo ? action.payload : shipment
+      );
+      return {
+        ...state,
+        shipments: updatedShipments,
+        editedShipment: action.payload,
       };
     default:
       return state;

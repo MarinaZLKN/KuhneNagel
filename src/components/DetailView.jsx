@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 import './DetailView.css';
+import {useDispatch} from "react-redux";
+import { updateShipment } from '../actions/actions';
 
+const DetailView = ({ shipment, handleBack}) => {
+    const dispatch = useDispatch();
+    const [editedShipment, setEditedShipment] = useState({ ...shipment });
 
-const DetailView = ({ shipment, handleBack, handleUpdate }) => {
+    const handleChange = (event, field) => {
+      const updatedShipment = { ...editedShipment, [field]: event.target.value };
+      setEditedShipment(updatedShipment);
+    };
+    console.log("Edited Shipment:", editedShipment);
 
-  const [editedShipment, setEditedShipment] = useState({ ...shipment });
+    const handleSave = () => {
+        dispatch(updateShipment(editedShipment));
+    };
 
-  const handleChange = (event, field) => {
-    const updatedShipment = { ...editedShipment, [field]: event.target.value };
-    setEditedShipment(updatedShipment);
-  };
-
-
-  //TODO better css for this page, also add a proper logic for UPDATE action
-  return (
+    return (
       <div className="detail-view">
           <h2>SHIPMENT DETAILS</h2>
           <div className="detail-row">
@@ -34,7 +38,7 @@ const DetailView = ({ shipment, handleBack, handleUpdate }) => {
                   className="input"
                   type="text"
                   value={editedShipment.date}
-                  onChange={(e) => handleChange(e, "date'")}
+                  onChange={(e) => handleChange(e, "date")}
                 />
               </div>
           </div>
@@ -83,8 +87,8 @@ const DetailView = ({ shipment, handleBack, handleUpdate }) => {
               </div>
           </div>
 
-      <button>Save</button>
-      <button onClick={handleBack}>Back to Table</button>
+      <button className="btn-detail" onClick={() => handleSave()}>Save</button>
+      <button id="back" className="btn-detail" onClick={handleBack}>Back to Table</button>
     </div>
   );
 };

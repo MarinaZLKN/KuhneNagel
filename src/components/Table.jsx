@@ -27,11 +27,20 @@ const Table = () => {
 
     console.log("Shipments data:", shipments);
 
-    if (selectedShipment) {
-      return (
-        <DetailView shipment={selectedShipment} handleBack={handleBack} />
-      );
-    }
+     if (selectedShipment) {
+        return (
+          <DetailView
+            shipment={selectedShipment}
+            handleBack={handleBack}
+            // handleDelete={handleDelete}
+          />
+        );
+      }
+
+     if (!shipments) {
+         return <div>Loading...</div>;
+     }
+
 
     return (
     <div>
@@ -57,8 +66,8 @@ const Table = () => {
               <td>{shipment.status}</td>
               <td>{shipment.consignee}</td>
               <td>
-                  <button className="btn-1" onClick={() => handleDetailView(shipment)}>Details</button>
-                  <button className="btn" onClick={() => handleDelete(shipment.orderNo)}>Delete</button>
+                  <button className="btn" onClick={() => handleDetailView(shipment)}>Details</button>
+                  <button id="delete" className="btn" onClick={() => handleDelete(shipment.orderNo)}>Delete</button>
               </td>
             </tr>
           ))}
