@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import './Table.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteShipment, fetchShipments } from '../actions/actions';
 import DetailView from "./DetailView.jsx";
-
+import './Table.css';
 const Table = () => {
     const dispatch = useDispatch();
     const shipments = useSelector(state => state.shipments);
     const [selectedShipment, setSelectedShipment] = useState(null);
+
 
     useEffect(() => {
       dispatch(fetchShipments());

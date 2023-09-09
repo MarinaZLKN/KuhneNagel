@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './DetailView.css';
 import {useDispatch} from "react-redux";
 import { updateShipment } from '../actions/actions';
+import './DetailView.css';
 
 const DetailView = ({ shipment, handleBack}) => {
     const dispatch = useDispatch();
