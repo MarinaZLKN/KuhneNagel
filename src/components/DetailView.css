@@ -45,14 +45,19 @@
     transition: background-color 0.3s ease;
 }
 
+.btn-detail:active {
+    background-color: #4b6b33;
+    transform: scale(0.99);
+}
+
 #back{
     background-color: #54a8a8;
 }
 
 .btn-detail:hover {
-  background-color: #6c9e45;
+    background-color: #6c9e45;
 }
 
 #back:hover {
-  background-color: #4c8b8b;
+    background-color: #4c8b8b;
 }
